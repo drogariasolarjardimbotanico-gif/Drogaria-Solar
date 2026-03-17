@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drogaria Solar</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      color: #2d3436;
+    }
+
+    header {
+      background: #fff;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .logo h1 {
+      color: #ff0000;
+    }
+
+    nav {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    nav a {
+      margin: 10px;
+      text-decoration: none;
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    .section {
+      display: none;
+      padding: 20px;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .product-card {
+      background: #fff;
+      padding: 15px;
+      margin: 10px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+
+    button {
+      background: red;
+      color: white;
+      border: none;
+      padding: 8px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    #cart-icon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: red;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    #cart-modal {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    #cart-modal.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <h1>💊 Drogaria Solar</h1>
+    <p>Sua saúde em primeiro lugar!</p>
+  </div>
+</header>
+
+<nav>
+  <a href="#" onclick="showSection('produtos')">Produtos</a>
+  <a href="#" onclick="showSection('contato')">Contato</a>
+</nav>
+
+<div id="produtos" class="section active">
+
+  <div class="product-card">
+    <p>Dipirona</p>
+    <p><strong>R$ 5,99</strong></p>
+    <button onclick="addToCart('Dipirona',5.99)">Adicionar</button>
+  </div>
+
+  <div class="product-card">
+    <p>Paracetamol</p>
+    <p><strong>R$ 7,99</strong></p>
+    <button onclick="addToCart('Paracetamol',7.99)">Adicionar</button>
+  </div>
+
+</div>
+
+<div id="contato" class="section">
+  <p>📱 WhatsApp: <a href="https://wa.me/556196130998">+55 61 96130-998</a></p>
+
+  <p>📍 Endereço:</p>
+  <p>
+    SH Jardim Botânico<br>
+    Condomínio Solar de Brasília Q 3<br>
+    Jardim Botânico, Brasília - DF<br>
+    CEP: 70297-400
+  </p>
+</div>
+
+<div id="cart-icon" onclick="toggleCart()">🛒 <span id="count">0</span></div>
+
+<div id="cart-modal">
+  <div id="items"></div>
+  <button onclick="sendWhats()">Finalizar Pedido</button>
+</div>
+
+<script>
+let cart = [];
+
+function showSection(id){
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function addToCart(name,price){
+  cart.push({name,price});
+  update();
+}
+
+function update(){
+  document.getElementById('count').innerText = cart.length;
+
+  let items = document.getElementById('items');
+  items.innerHTML = '';
+
+  cart.forEach(i=>{
+    items.innerHTML += `<p>${i.name} - R$ ${i.price}</p>`;
+  });
+}
+
+function toggleCart(){
+  document.getElementById('cart-modal').classList.toggle('active');
+}
+
+function sendWhats(){
+  let total = cart.reduce((s,i)=>s+i.price,0);
+
+  let msg = "Pedido:\n";
+  cart.forEach(i=>{
+    msg += `${i.name} - R$ ${i.price}\n`;
+  });
+
+  msg += `Total: R$ ${total}`;
+
+  window.open(`https://wa.me/556196130998?text=${encodeURIComponent(msg)}`);
+}
+</script>
+
+</body>
+</html>
