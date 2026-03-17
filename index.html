@@ -36,277 +36,163 @@
       max-width: 1300px;
       margin: 0 auto;
       display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .logo {
-      background: #fff;
-      padding: 15px 25px;
-      border-radius: 25px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      display: inline-flex;
-      align-items: center;
       flex-direction: column;
-    }
-    .logo-row {
-      display: flex;
       align-items: center;
-    }
-    .logo .pill-icon {
-      font-size: 1.5em;
-      margin-right: 10px;
-      color: #ff0000;
     }
     .logo h1 {
-      font-size: 2em;
+      font-size: 2.5em;
       font-weight: 700;
-      color: #ff0000;
-      letter-spacing: 1px;
+      color: #e31c19; /* Vermelho mais próximo da logo */
       margin: 0;
     }
     .logo p {
-      font-size: 0.8em;
-      color: #ff0000;
-      margin: 0;
+      font-size: 1em;
+      color: #e31c19;
+      margin-bottom: 15px;
       font-style: italic;
+    }
+    .fachada-img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      margin-top: 10px;
+      border: 3px solid #e31c19;
     }
     nav {
       background-color: #fff;
-      padding: 10px 0;
+      padding: 15px 0;
       text-align: center;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       position: sticky;
-      top: 90px;
-      z-index: 1000;
+      top: 0; /* Ajuste conforme a altura do header se desejar fixar */
+      z-index: 999;
     }
     nav a {
-      margin: 0 15px;
+      margin: 0 12px;
       text-decoration: none;
-      color: #ff0000;
+      color: #e31c19;
       font-weight: 600;
-      font-size: 1.1em;
+      font-size: 1em;
       padding: 8px 15px;
       border-radius: 20px;
-      transition: color 0.3s ease, background-color 0.3s ease;
+      transition: 0.3s;
     }
     nav a:hover {
-      background-color: #ff0000;
+      background-color: #e31c19;
       color: #fff;
     }
     .section {
       display: none;
       padding: 40px 20px;
-      max-width: 1300px;
+      max-width: 1200px;
       margin: 0 auto;
     }
     .section.active {
       display: block;
     }
     .section h2 {
-      color: #ff0000;
-      font-size: 2em;
-      font-weight: 600;
-      margin-bottom: 30px;
+      color: #e31c19;
       text-align: center;
-      position: relative;
-    }
-    .section h2::after {
-      content: "";
-      width: 60px;
-      height: 4px;
-      background: #ff0000;
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-radius: 2px;
+      margin-bottom: 30px;
+      font-size: 2em;
     }
     .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      justify-items: center;
+      gap: 25px;
     }
     .product-card {
       background: #fff;
       border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       padding: 20px;
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: 0.3s;
     }
     .product-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     }
     .product-card img {
       max-width: 100%;
-      height: 150px;
+      height: 160px;
       object-fit: contain;
-      border-radius: 10px;
       margin-bottom: 15px;
     }
-    .product-card p {
-      margin: 8px 0;
-      font-size: 0.95em;
-      color: #636e72;
-    }
-    .product-card strong {
-      color: #ff0000;
-      font-size: 1.2em;
-      font-weight: 600;
-    }
     .add-to-cart {
-      background-color: #ff0000;
+      background-color: #e31c19;
       color: #fff;
       border: none;
-      padding: 8px 15px;
-      border-radius: 20px;
+      padding: 10px 20px;
+      border-radius: 25px;
       cursor: pointer;
-      font-weight: 500;
-      transition: background-color 0.3s ease;
-    }
-    .add-to-cart:hover {
-      background-color: #cc0000;
+      font-weight: 600;
+      margin-top: 10px;
     }
     #cart-icon {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #ff0000;
+      bottom: 25px;
+      right: 25px;
+      background: #e31c19;
       color: #fff;
-      width: 60px;
-      height: 60px;
+      width: 65px;
+      height: 65px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5em;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      font-size: 1.8em;
       cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       z-index: 1000;
-      transition: transform 0.3s ease;
-    }
-    #cart-icon:hover {
-      background-color: #cc0000;
-      transform: scale(1.1);
     }
     #cart-count {
       position: absolute;
-      top: -5px;
-      right: -5px;
-      background-color: #fff;
-      color: #ff0000;
+      top: 0;
+      right: 0;
+      background: #fff;
+      color: #e31c19;
       border-radius: 50%;
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
+      font-size: 0.7em;
+      font-weight: bold;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.9em;
-      font-weight: 600;
     }
     #cart-modal {
       display: none;
       position: fixed;
-      bottom: 90px;
-      right: 20px;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      max-width: 300px;
-      width: 100%;
-      max-height: 400px;
-      overflow-y: auto;
-      transition: opacity 0.3s ease;
-      opacity: 0;
-    }
-    #cart-modal.active {
-      display: block;
-      opacity: 1;
-    }
-    #cart-items {
-      margin-bottom: 15px;
-    }
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 5px 0;
-      color: #2d3436;
-    }
-    .remove-from-cart {
-      background-color: #e74c3c;
-      color: #fff;
-      border: none;
-      padding: 5px 10px;
+      bottom: 100px;
+      right: 25px;
+      background: #fff;
+      padding: 25px;
       border-radius: 15px;
-      cursor: pointer;
-      font-size: 0.8em;
-      transition: background-color 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      width: 320px;
+      max-height: 450px;
+      overflow-y: auto;
+      z-index: 1001;
     }
-    .remove-from-cart:hover {
-      background-color: #c0392b;
-    }
-    #payment-method {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    #checkout-btn {
-      background-color: #ff0000;
-      color: #fff;
-      border: none;
-      padding: 10px;
-      border-radius: 20px;
-      width: 100%;
-      cursor: pointer;
-      font-weight: 500;
-      transition: background-color 0.3s ease;
-    }
-    #checkout-btn:hover {
-      background-color: #cc0000;
-    }
-    #contato p {
-      font-size: 1.1em;
-      color: #2d3436;
-      margin: 10px 0;
-      text-align: center;
-    }
-    #contato p a {
-      color: #ff0000;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    #contato p a:hover {
-      text-decoration: underline;
-    }
+    #cart-modal.active { display: block; }
     footer {
-      background: #ff0000;
+      background: #e31c19;
       color: #fff;
       text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      font-size: 0.9em;
-    }
-    @media (max-width: 768px) {
-      .logo h1 { font-size: 1.5em; }
-      nav a { margin: 0 5px; font-size: 0.9em; padding: 6px 10px; }
+      padding: 30px;
+      margin-top: 50px;
     }
   </style>
 </head>
 <body>
+
   <header>
     <div class="header-container">
       <div class="logo">
-        <div class="logo-row">
-          <span class="pill-icon">☀️</span>
-          <h1>Drogaria Solar</h1>
-        </div>
+        <h1>Drogaria Solar</h1>
         <p>Sua saúde em primeiro lugar!</p>
+        <img src="imagens/image.jpg" alt="Fachada Drogaria Solar" class="fachada-img">
       </div>
     </div>
   </header>
@@ -314,125 +200,111 @@
   <nav>
     <a href="#" onclick="showSection('perfumaria')">Perfumaria</a>
     <a href="#" onclick="showSection('medicamentos')">Medicamentos</a>
-    <a href="#" onclick="showSection('higiene')">Higiene Pessoal</a>
-    <a href="#" onclick="showSection('infantil')">Linha Infantil</a>
+    <a href="#" onclick="showSection('higiene')">Higiene</a>
+    <a href="#" onclick="showSection('infantil')">Infantil</a>
     <a href="#" onclick="showSection('vitaminas')">Vitaminas</a>
     <a href="#" onclick="showSection('contato')">Contato</a>
   </nav>
 
-  <div id="perfumaria" class="section">
+  <div id="perfumaria" class="section active">
     <h2>Perfumaria</h2>
     <div class="products-grid">
       <div class="product-card">
         <img src="imagens/tintura_maxton.jpg" alt="Tintura Maxton">
         <p>Tintura Maxton</p>
         <p><strong>R$ 9,99</strong></p>
-        <button class="add-to-cart" onclick="addToCart('Tintura Maxton', 9.99)">Adicionar ao Carrinho</button>
+        <button class="add-to-cart" onclick="addToCart('Tintura Maxton', 9.99)">Adicionar</button>
       </div>
-      </div>
-  </div>
-
-  <div id="medicamentos" class="section">
-    <h2>Medicamentos Isentos de Prescrição</h2>
-    <div class="products-grid">
       <div class="product-card">
-        <img src="imagens/simeticona_75mgml.jpg" alt="Simeticona">
-        <p>Simeticona 75mg/ml Sabor Laranja</p>
-        <p><strong>R$ 6,99</strong></p>
-        <button class="add-to-cart" onclick="addToCart('Simeticona 75mg/ml', 6.99)">Adicionar ao Carrinho</button>
+        <img src="imagens/shampoo_nutry_cap_mamona.jpg" alt="Shampoo Mamona">
+        <p>Shampoo Nutry Cap Mamona</p>
+        <p><strong>R$ 25,99</strong></p>
+        <button class="add-to-cart" onclick="addToCart('Shampoo Nutry Cap Mamona', 25.99)">Adicionar</button>
       </div>
     </div>
   </div>
 
   <div id="contato" class="section">
     <h2>Contato</h2>
-    <p>📱 WhatsApp: <a href="https://wa.me/556196130998">+55 61 96130-998</a></p>
-    <p>📍 Endereço: SH Jardim Botânico Condomínio Solar de Brasília Q 3 - Jardim Botânico, Brasília - DF, 70297-400</p>
-    <p style="text-align: center; font-weight: 700; font-size: 1.2em; color: #ff0000; padding: 10px; background-color: #f8f9fa; border: 1px solid #ff0000; border-radius: 5px; margin-top: 20px;">
-      Visite a Drogaria Solar e descubra atendimento de qualidade e promoções incríveis!
-    </p>
+    <div style="text-align: center; font-size: 1.2em;">
+        <p>📱 WhatsApp: <a href="https://wa.me/556196130998" style="color:#e31c19; font-weight:bold;">(61) 96130-998</a></p><br>
+        <p>📍 <strong>Endereço:</strong><br>
+        SH Jardim Botânico Condomínio Solar de Brasília Q 3<br>
+        Jardim Botânico, Brasília - DF, 70297-400</p>
+    </div>
   </div>
 
   <footer>
     <p>© 2025 Drogaria Solar - Todos os direitos reservados.</p>
   </footer>
 
-  <div id="cart-icon">🛒<span id="cart-count">0</span></div>
+  <div id="cart-icon" onclick="toggleCart()">
+    🛒 <span id="cart-count">0</span>
+  </div>
+
   <div id="cart-modal">
+    <h3 style="margin-bottom:15px; color:#e31c19;">Seu Carrinho</h3>
     <div id="cart-items"></div>
-    <select id="payment-method">
+    <hr style="margin:15px 0;">
+    <label>Forma de Pagamento:</label>
+    <select id="payment-method" style="width: 100%; margin: 10px 0; padding: 8px; border-radius: 5px;">
       <option value="dinheiro">Dinheiro</option>
-      <option value="cartao">Cartão</option>
+      <option value="cartao">Cartão (Maquininha)</option>
       <option value="pix">Pix</option>
     </select>
-    <button id="checkout-btn" onclick="sendToWhatsApp()">Finalizar Pedido</button>
+    <button onclick="sendToWhatsApp()" style="width: 100%; background: #e31c19; color: #fff; border: none; padding: 12px; border-radius: 25px; cursor: pointer; font-weight: bold;">Finalizar no WhatsApp</button>
   </div>
 
   <script>
     let cart = [];
 
     function showSection(sectionId) {
-      document.querySelectorAll('.section').forEach(section => {
-        section.classList.remove('active');
-      });
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.getElementById(sectionId).classList.add('active');
+      window.scrollTo(0, 0);
     }
 
-    window.onload = function() { showSection('perfumaria'); };
-
-    function addToCart(productName, price) {
-      cart.push({ name: productName, price: price });
-      alert(`${productName} adicionado ao carrinho!`);
-      updateCartCount();
-      updateCartDisplay();
+    function addToCart(name, price) {
+      cart.push({name, price});
+      updateCart();
+      // Pequeno feedback visual
+      const btn = event.target;
+      btn.innerText = "Adicionado! ✓";
+      btn.style.background = "#27ae60";
+      setTimeout(() => {
+          btn.innerText = "Adicionar";
+          btn.style.background = "#e31c19";
+      }, 1000);
     }
 
-    function removeFromCart(index) {
-      cart.splice(index, 1);
-      updateCartCount();
-      updateCartDisplay();
+    function updateCart() {
+      document.getElementById('cart-count').innerText = cart.length;
+      const itemsDiv = document.getElementById('cart-items');
+      if(cart.length === 0) {
+          itemsDiv.innerHTML = "<p>Carrinho vazio</p>";
+      } else {
+          itemsDiv.innerHTML = cart.map((item, i) => `
+            <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.9em;">
+                <span>${item.name}</span>
+                <strong>R$ ${item.price.toFixed(2)}</strong>
+            </div>`).join('');
+      }
     }
 
     function toggleCart() {
-      const modal = document.getElementById('cart-modal');
-      modal.classList.toggle('active');
-      updateCartDisplay();
-    }
-
-    function updateCartCount() {
-      document.getElementById('cart-count').textContent = cart.length;
-    }
-
-    function updateCartDisplay() {
-      const cartItems = document.getElementById('cart-items');
-      cartItems.innerHTML = cart.length === 0 ? '<p>Carrinho vazio.</p>' : '';
-      cart.forEach((item, index) => {
-        const div = document.createElement('div');
-        div.className = 'cart-item';
-        div.innerHTML = `<span>${item.name} - R$ ${item.price.toFixed(2)}</span>
-                        <button class="remove-from-cart" onclick="removeFromCart(${index})">Remover</button>`;
-        cartItems.appendChild(div);
-      });
+      document.getElementById('cart-modal').classList.toggle('active');
     }
 
     function sendToWhatsApp() {
-      if (cart.length === 0) {
-        alert('Seu carrinho está vazio!');
-        return;
-      }
-      const paymentMethod = document.getElementById('payment-method').value;
-      let total = cart.reduce((sum, item) => sum + item.price, 0);
-      let message = `Olá Drogaria Solar! Quero fazer um pedido:\n\nItens:\n${cart.map(item => `- ${item.name} (R$ ${item.price.toFixed(2)})`).join('\n')}\n\nTotal: R$ ${total.toFixed(2)}\nPagamento: ${paymentMethod}`;
+      if(cart.length === 0) return alert("Adicione produtos ao carrinho primeiro!");
+      const total = cart.reduce((acc, item) => acc + item.price, 0);
+      const method = document.getElementById('payment-method').value;
+      const itensTexto = cart.map(i => `- ${i.name} (R$ ${i.price.toFixed(2)})`).join('%0A');
       
-      // Número atualizado conforme solicitado
-      const whatsappUrl = `https://wa.me/556196130998?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, '_blank');
-      cart = [];
-      updateCartCount();
-      document.getElementById('cart-modal').classList.remove('active');
+      const mensagem = `Olá Drogaria Solar! Gostaria de fazer um pedido:%0A%0A*Itens:*%0A${itensTexto}%0A%0A*Total:* R$ ${total.toFixed(2)}%0A*Pagamento:* ${method}`;
+      
+      window.open(`https://wa.me/556196130998?text=${mensagem}`);
     }
-
-    document.getElementById('cart-icon').addEventListener('click', toggleCart);
   </script>
 </body>
 </html>
