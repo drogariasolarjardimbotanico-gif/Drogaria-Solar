@@ -23,14 +23,12 @@
       background-color: #f8f9fa;
       color: #2d3436;
     }
+    /* O topo agora não é mais fixo, ele sobe com a página */
     header {
       background: #fff;
-      padding: 20px 20px;
+      padding: 30px 20px;
       text-align: center;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      z-index: 10;
     }
     .header-container {
       max-width: 1300px;
@@ -42,13 +40,13 @@
     .logo h1 {
       font-size: 2.5em;
       font-weight: 700;
-      color: #e31c19; /* Vermelho mais próximo da logo */
+      color: #e31c19;
       margin: 0;
     }
     .logo p {
-      font-size: 1em;
+      font-size: 1.1em;
       color: #e31c19;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       font-style: italic;
     }
     .fachada-img {
@@ -56,27 +54,28 @@
       max-width: 600px;
       border-radius: 12px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-      margin-top: 10px;
       border: 3px solid #e31c19;
     }
+    /* O MENU fica fixo no topo quando você desce a página */
     nav {
       background-color: #fff;
       padding: 15px 0;
       text-align: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       position: sticky;
-      top: 0; /* Ajuste conforme a altura do header se desejar fixar */
-      z-index: 999;
+      top: 0;
+      z-index: 1000;
     }
     nav a {
-      margin: 0 12px;
+      margin: 0 10px;
       text-decoration: none;
       color: #e31c19;
       font-weight: 600;
-      font-size: 1em;
+      font-size: 0.95em;
       padding: 8px 15px;
       border-radius: 20px;
       transition: 0.3s;
+      white-space: nowrap;
     }
     nav a:hover {
       background-color: #e31c19;
@@ -87,6 +86,7 @@
       padding: 40px 20px;
       max-width: 1200px;
       margin: 0 auto;
+      min-height: 600px;
     }
     .section.active {
       display: block;
@@ -110,9 +110,7 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
       transition: 0.3s;
     }
-    .product-card:hover {
-      transform: translateY(-5px);
-    }
+    .product-card:hover { transform: translateY(-5px); }
     .product-card img {
       max-width: 100%;
       height: 160px;
@@ -127,7 +125,7 @@
       border-radius: 25px;
       cursor: pointer;
       font-weight: 600;
-      margin-top: 10px;
+      width: 100%;
     }
     #cart-icon {
       position: fixed;
@@ -144,7 +142,7 @@
       font-size: 1.8em;
       cursor: pointer;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      z-index: 1000;
+      z-index: 2000;
     }
     #cart-count {
       position: absolute;
@@ -171,9 +169,7 @@
       border-radius: 15px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
       width: 320px;
-      max-height: 450px;
-      overflow-y: auto;
-      z-index: 1001;
+      z-index: 2001;
     }
     #cart-modal.active { display: block; }
     footer {
@@ -182,6 +178,11 @@
       text-align: center;
       padding: 30px;
       margin-top: 50px;
+    }
+    @media (max-width: 768px) {
+      nav { overflow-x: auto; display: flex; padding: 10px; }
+      nav a { font-size: 0.85em; padding: 6px 12px; }
+      .logo h1 { font-size: 1.8em; }
     }
   </style>
 </head>
@@ -198,12 +199,12 @@
   </header>
 
   <nav>
-    <a href="#" onclick="showSection('perfumaria')">Perfumaria</a>
-    <a href="#" onclick="showSection('medicamentos')">Medicamentos</a>
-    <a href="#" onclick="showSection('higiene')">Higiene</a>
-    <a href="#" onclick="showSection('infantil')">Infantil</a>
-    <a href="#" onclick="showSection('vitaminas')">Vitaminas</a>
-    <a href="#" onclick="showSection('contato')">Contato</a>
+    <a href="javascript:void(0)" onclick="showSection('perfumaria')">Perfumaria</a>
+    <a href="javascript:void(0)" onclick="showSection('medicamentos')">Medicamentos</a>
+    <a href="javascript:void(0)" onclick="showSection('higiene')">Higiene</a>
+    <a href="javascript:void(0)" onclick="showSection('infantil')">Infantil</a>
+    <a href="javascript:void(0)" onclick="showSection('vitaminas')">Vitaminas</a>
+    <a href="javascript:void(0)" onclick="showSection('contato')">Contato</a>
   </nav>
 
   <div id="perfumaria" class="section active">
@@ -215,22 +216,14 @@
         <p><strong>R$ 9,99</strong></p>
         <button class="add-to-cart" onclick="addToCart('Tintura Maxton', 9.99)">Adicionar</button>
       </div>
-      <div class="product-card">
-        <img src="imagens/shampoo_nutry_cap_mamona.jpg" alt="Shampoo Mamona">
-        <p>Shampoo Nutry Cap Mamona</p>
-        <p><strong>R$ 25,99</strong></p>
-        <button class="add-to-cart" onclick="addToCart('Shampoo Nutry Cap Mamona', 25.99)">Adicionar</button>
-      </div>
     </div>
   </div>
 
   <div id="contato" class="section">
     <h2>Contato</h2>
-    <div style="text-align: center; font-size: 1.2em;">
+    <div style="text-align: center;">
         <p>📱 WhatsApp: <a href="https://wa.me/556196130998" style="color:#e31c19; font-weight:bold;">(61) 96130-998</a></p><br>
-        <p>📍 <strong>Endereço:</strong><br>
-        SH Jardim Botânico Condomínio Solar de Brasília Q 3<br>
-        Jardim Botânico, Brasília - DF, 70297-400</p>
+        <p>📍 SH Jardim Botânico Condomínio Solar de Brasília Q 3<br>Brasília - DF</p>
     </div>
   </div>
 
@@ -243,16 +236,14 @@
   </div>
 
   <div id="cart-modal">
-    <h3 style="margin-bottom:15px; color:#e31c19;">Seu Carrinho</h3>
-    <div id="cart-items"></div>
-    <hr style="margin:15px 0;">
-    <label>Forma de Pagamento:</label>
-    <select id="payment-method" style="width: 100%; margin: 10px 0; padding: 8px; border-radius: 5px;">
+    <h3 style="color:#e31c19;">Seu Carrinho</h3>
+    <div id="cart-items" style="margin: 15px 0;"></div>
+    <select id="payment-method" style="width: 100%; padding: 8px; margin-bottom: 10px;">
       <option value="dinheiro">Dinheiro</option>
-      <option value="cartao">Cartão (Maquininha)</option>
+      <option value="cartao">Cartão</option>
       <option value="pix">Pix</option>
     </select>
-    <button onclick="sendToWhatsApp()" style="width: 100%; background: #e31c19; color: #fff; border: none; padding: 12px; border-radius: 25px; cursor: pointer; font-weight: bold;">Finalizar no WhatsApp</button>
+    <button onclick="sendToWhatsApp()" style="width: 100%; background: #e31c19; color: #fff; border: none; padding: 12px; border-radius: 25px; cursor: pointer; font-weight: bold;">Pedir no WhatsApp</button>
   </div>
 
   <script>
@@ -261,34 +252,26 @@
     function showSection(sectionId) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.getElementById(sectionId).classList.add('active');
-      window.scrollTo(0, 0);
+      
+      // Isso faz a página rolar para o início da seção escolhida, logo abaixo da imagem
+      const navHeight = document.querySelector('nav').offsetHeight;
+      const sectionPos = document.getElementById(sectionId).offsetTop;
+      window.scrollTo({
+        top: sectionPos - navHeight,
+        behavior: 'smooth'
+      });
     }
 
     function addToCart(name, price) {
       cart.push({name, price});
       updateCart();
-      // Pequeno feedback visual
-      const btn = event.target;
-      btn.innerText = "Adicionado! ✓";
-      btn.style.background = "#27ae60";
-      setTimeout(() => {
-          btn.innerText = "Adicionar";
-          btn.style.background = "#e31c19";
-      }, 1000);
+      alert(name + " adicionado!");
     }
 
     function updateCart() {
       document.getElementById('cart-count').innerText = cart.length;
       const itemsDiv = document.getElementById('cart-items');
-      if(cart.length === 0) {
-          itemsDiv.innerHTML = "<p>Carrinho vazio</p>";
-      } else {
-          itemsDiv.innerHTML = cart.map((item, i) => `
-            <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.9em;">
-                <span>${item.name}</span>
-                <strong>R$ ${item.price.toFixed(2)}</strong>
-            </div>`).join('');
-      }
+      itemsDiv.innerHTML = cart.map(i => `<div style="display:flex; justify-content:space-between;"><span>${i.name}</span><strong>R$ ${i.price.toFixed(2)}</strong></div>`).join('');
     }
 
     function toggleCart() {
@@ -296,14 +279,11 @@
     }
 
     function sendToWhatsApp() {
-      if(cart.length === 0) return alert("Adicione produtos ao carrinho primeiro!");
-      const total = cart.reduce((acc, item) => acc + item.price, 0);
+      if(cart.length === 0) return alert("Carrinho vazio!");
+      const total = cart.reduce((acc, i) => acc + i.price, 0);
       const method = document.getElementById('payment-method').value;
-      const itensTexto = cart.map(i => `- ${i.name} (R$ ${i.price.toFixed(2)})`).join('%0A');
-      
-      const mensagem = `Olá Drogaria Solar! Gostaria de fazer um pedido:%0A%0A*Itens:*%0A${itensTexto}%0A%0A*Total:* R$ ${total.toFixed(2)}%0A*Pagamento:* ${method}`;
-      
-      window.open(`https://wa.me/556196130998?text=${mensagem}`);
+      const text = `Olá Drogaria Solar! Pedido:\n${cart.map(i => `- ${i.name}`).join('\n')}\nTotal: R$ ${total.toFixed(2)}\nPagamento: ${method}`;
+      window.open(`https://wa.me/556196130998?text=${encodeURIComponent(text)}`);
     }
   </script>
 </body>
