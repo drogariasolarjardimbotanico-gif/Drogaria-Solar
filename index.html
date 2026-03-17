@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-72KJGV14Y1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-72KJGV14Y1');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Drogaria Solar</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
   <style>
     * {
       margin: 0;
@@ -14,178 +19,420 @@
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
     }
-
     body {
       background-color: #f8f9fa;
       color: #2d3436;
     }
-
     header {
       background: #fff;
-      padding: 20px;
+      padding: 20px 20px;
       text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-
-    .logo h1 {
+    .header-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .logo {
+      background: #fff;
+      padding: 15px 25px;
+      border-radius: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      display: inline-flex;
+      align-items: center;
+      flex-direction: column;
+    }
+    .logo-row {
+      display: flex;
+      align-items: center;
+    }
+    .logo .pill-icon {
+      font-size: 1.5em;
+      margin-right: 10px;
       color: #ff0000;
     }
-
-    nav {
-      text-align: center;
-      margin: 20px 0;
+    .logo h1 {
+      font-size: 2em;
+      font-weight: 700;
+      color: #ff0000;
+      letter-spacing: 1px;
+      margin: 0;
     }
-
+    .logo p {
+      font-size: 0.8em;
+      color: #ff0000;
+      margin: 0;
+      font-style: italic;
+    }
+    nav {
+      background-color: #fff;
+      padding: 10px 0;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 90px;
+      z-index: 1000;
+    }
     nav a {
-      margin: 10px;
+      margin: 0 15px;
       text-decoration: none;
       color: #ff0000;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 1.1em;
+      padding: 8px 15px;
+      border-radius: 20px;
+      transition: color 0.3s ease, background-color 0.3s ease;
     }
-
+    nav a:hover {
+      background-color: #ff0000;
+      color: #fff;
+    }
     .section {
       display: none;
-      padding: 20px;
+      padding: 40px 20px;
+      max-width: 1300px;
+      margin: 0 auto;
     }
-
-    .active {
+    .section.active {
       display: block;
     }
-
+    .section h2 {
+      color: #ff0000;
+      font-size: 2em;
+      font-weight: 600;
+      margin-bottom: 30px;
+      text-align: center;
+      position: relative;
+    }
+    .section h2::after {
+      content: "";
+      width: 60px;
+      height: 4px;
+      background: #ff0000;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
     .product-card {
       background: #fff;
-      padding: 15px;
-      margin: 10px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    .product-card img {
+      max-width: 100%;
+      height: 150px;
+      object-fit: contain;
       border-radius: 10px;
-      display: inline-block;
+      margin-bottom: 15px;
     }
-
-    button {
-      background: red;
-      color: white;
+    .product-card p {
+      margin: 8px 0;
+      font-size: 0.95em;
+      color: #636e72;
+    }
+    .product-card strong {
+      color: #ff0000;
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+    .add-to-cart {
+      background-color: #ff0000;
+      color: #fff;
       border: none;
-      padding: 8px;
+      padding: 8px 15px;
+      border-radius: 20px;
       cursor: pointer;
-      border-radius: 5px;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
     }
-
+    .add-to-cart:hover {
+      background-color: #cc0000;
+    }
     #cart-icon {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: red;
-      color: white;
-      padding: 15px;
+      background-color: #ff0000;
+      color: #fff;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
       cursor: pointer;
+      z-index: 1000;
+      transition: transform 0.3s ease;
     }
-
+    #cart-icon:hover {
+      background-color: #cc0000;
+      transform: scale(1.1);
+    }
+    #cart-count {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: #fff;
+      color: #ff0000;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9em;
+      font-weight: 600;
+    }
     #cart-modal {
       display: none;
       position: fixed;
-      bottom: 80px;
+      bottom: 90px;
       right: 20px;
-      background: white;
-      padding: 15px;
+      background-color: #fff;
+      padding: 20px;
       border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      max-width: 300px;
+      width: 100%;
+      max-height: 400px;
+      overflow-y: auto;
+      transition: opacity 0.3s ease;
+      opacity: 0;
     }
-
     #cart-modal.active {
       display: block;
+      opacity: 1;
+    }
+    #cart-items {
+      margin-bottom: 15px;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 5px 0;
+      color: #2d3436;
+    }
+    .remove-from-cart {
+      background-color: #e74c3c;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 15px;
+      cursor: pointer;
+      font-size: 0.8em;
+      transition: background-color 0.3s ease;
+    }
+    .remove-from-cart:hover {
+      background-color: #c0392b;
+    }
+    #payment-method {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    #checkout-btn {
+      background-color: #ff0000;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 20px;
+      width: 100%;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+    #checkout-btn:hover {
+      background-color: #cc0000;
+    }
+    #contato p {
+      font-size: 1.1em;
+      color: #2d3436;
+      margin: 10px 0;
+      text-align: center;
+    }
+    #contato p a {
+      color: #ff0000;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    #contato p a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      background: #ff0000;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 0.9em;
+    }
+    @media (max-width: 768px) {
+      .logo h1 { font-size: 1.5em; }
+      nav a { margin: 0 5px; font-size: 0.9em; padding: 6px 10px; }
     }
   </style>
 </head>
-
 <body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <div class="logo-row">
+          <span class="pill-icon">☀️</span>
+          <h1>Drogaria Solar</h1>
+        </div>
+        <p>Sua saúde em primeiro lugar!</p>
+      </div>
+    </div>
+  </header>
 
-<header>
-  <div class="logo">
-    <h1>💊 Drogaria Solar</h1>
-    <p>Sua saúde em primeiro lugar!</p>
+  <nav>
+    <a href="#" onclick="showSection('perfumaria')">Perfumaria</a>
+    <a href="#" onclick="showSection('medicamentos')">Medicamentos</a>
+    <a href="#" onclick="showSection('higiene')">Higiene Pessoal</a>
+    <a href="#" onclick="showSection('infantil')">Linha Infantil</a>
+    <a href="#" onclick="showSection('vitaminas')">Vitaminas</a>
+    <a href="#" onclick="showSection('contato')">Contato</a>
+  </nav>
+
+  <div id="perfumaria" class="section">
+    <h2>Perfumaria</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <img src="imagens/tintura_maxton.jpg" alt="Tintura Maxton">
+        <p>Tintura Maxton</p>
+        <p><strong>R$ 9,99</strong></p>
+        <button class="add-to-cart" onclick="addToCart('Tintura Maxton', 9.99)">Adicionar ao Carrinho</button>
+      </div>
+      </div>
   </div>
-</header>
 
-<nav>
-  <a href="#" onclick="showSection('produtos')">Produtos</a>
-  <a href="#" onclick="showSection('contato')">Contato</a>
-</nav>
-
-<div id="produtos" class="section active">
-
-  <div class="product-card">
-    <p>Dipirona</p>
-    <p><strong>R$ 5,99</strong></p>
-    <button onclick="addToCart('Dipirona',5.99)">Adicionar</button>
+  <div id="medicamentos" class="section">
+    <h2>Medicamentos Isentos de Prescrição</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <img src="imagens/simeticona_75mgml.jpg" alt="Simeticona">
+        <p>Simeticona 75mg/ml Sabor Laranja</p>
+        <p><strong>R$ 6,99</strong></p>
+        <button class="add-to-cart" onclick="addToCart('Simeticona 75mg/ml', 6.99)">Adicionar ao Carrinho</button>
+      </div>
+    </div>
   </div>
 
-  <div class="product-card">
-    <p>Paracetamol</p>
-    <p><strong>R$ 7,99</strong></p>
-    <button onclick="addToCart('Paracetamol',7.99)">Adicionar</button>
+  <div id="contato" class="section">
+    <h2>Contato</h2>
+    <p>📱 WhatsApp: <a href="https://wa.me/556196130998">+55 61 96130-998</a></p>
+    <p>📍 Endereço: SH Jardim Botânico Condomínio Solar de Brasília Q 3 - Jardim Botânico, Brasília - DF, 70297-400</p>
+    <p style="text-align: center; font-weight: 700; font-size: 1.2em; color: #ff0000; padding: 10px; background-color: #f8f9fa; border: 1px solid #ff0000; border-radius: 5px; margin-top: 20px;">
+      Visite a Drogaria Solar e descubra atendimento de qualidade e promoções incríveis!
+    </p>
   </div>
 
-</div>
+  <footer>
+    <p>© 2025 Drogaria Solar - Todos os direitos reservados.</p>
+  </footer>
 
-<div id="contato" class="section">
-  <p>📱 WhatsApp: <a href="https://wa.me/556196130998">+55 61 96130-998</a></p>
+  <div id="cart-icon">🛒<span id="cart-count">0</span></div>
+  <div id="cart-modal">
+    <div id="cart-items"></div>
+    <select id="payment-method">
+      <option value="dinheiro">Dinheiro</option>
+      <option value="cartao">Cartão</option>
+      <option value="pix">Pix</option>
+    </select>
+    <button id="checkout-btn" onclick="sendToWhatsApp()">Finalizar Pedido</button>
+  </div>
 
-  <p>📍 Endereço:</p>
-  <p>
-    SH Jardim Botânico<br>
-    Condomínio Solar de Brasília Q 3<br>
-    Jardim Botânico, Brasília - DF<br>
-    CEP: 70297-400
-  </p>
-</div>
+  <script>
+    let cart = [];
 
-<div id="cart-icon" onclick="toggleCart()">🛒 <span id="count">0</span></div>
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+    }
 
-<div id="cart-modal">
-  <div id="items"></div>
-  <button onclick="sendWhats()">Finalizar Pedido</button>
-</div>
+    window.onload = function() { showSection('perfumaria'); };
 
-<script>
-let cart = [];
+    function addToCart(productName, price) {
+      cart.push({ name: productName, price: price });
+      alert(`${productName} adicionado ao carrinho!`);
+      updateCartCount();
+      updateCartDisplay();
+    }
 
-function showSection(id){
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartCount();
+      updateCartDisplay();
+    }
 
-function addToCart(name,price){
-  cart.push({name,price});
-  update();
-}
+    function toggleCart() {
+      const modal = document.getElementById('cart-modal');
+      modal.classList.toggle('active');
+      updateCartDisplay();
+    }
 
-function update(){
-  document.getElementById('count').innerText = cart.length;
+    function updateCartCount() {
+      document.getElementById('cart-count').textContent = cart.length;
+    }
 
-  let items = document.getElementById('items');
-  items.innerHTML = '';
+    function updateCartDisplay() {
+      const cartItems = document.getElementById('cart-items');
+      cartItems.innerHTML = cart.length === 0 ? '<p>Carrinho vazio.</p>' : '';
+      cart.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `<span>${item.name} - R$ ${item.price.toFixed(2)}</span>
+                        <button class="remove-from-cart" onclick="removeFromCart(${index})">Remover</button>`;
+        cartItems.appendChild(div);
+      });
+    }
 
-  cart.forEach(i=>{
-    items.innerHTML += `<p>${i.name} - R$ ${i.price}</p>`;
-  });
-}
+    function sendToWhatsApp() {
+      if (cart.length === 0) {
+        alert('Seu carrinho está vazio!');
+        return;
+      }
+      const paymentMethod = document.getElementById('payment-method').value;
+      let total = cart.reduce((sum, item) => sum + item.price, 0);
+      let message = `Olá Drogaria Solar! Quero fazer um pedido:\n\nItens:\n${cart.map(item => `- ${item.name} (R$ ${item.price.toFixed(2)})`).join('\n')}\n\nTotal: R$ ${total.toFixed(2)}\nPagamento: ${paymentMethod}`;
+      
+      // Número atualizado conforme solicitado
+      const whatsappUrl = `https://wa.me/556196130998?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+      cart = [];
+      updateCartCount();
+      document.getElementById('cart-modal').classList.remove('active');
+    }
 
-function toggleCart(){
-  document.getElementById('cart-modal').classList.toggle('active');
-}
-
-function sendWhats(){
-  let total = cart.reduce((s,i)=>s+i.price,0);
-
-  let msg = "Pedido:\n";
-  cart.forEach(i=>{
-    msg += `${i.name} - R$ ${i.price}\n`;
-  });
-
-  msg += `Total: R$ ${total}`;
-
-  window.open(`https://wa.me/556196130998?text=${encodeURIComponent(msg)}`);
-}
-</script>
-
+    document.getElementById('cart-icon').addEventListener('click', toggleCart);
+  </script>
 </body>
 </html>
