@@ -13,177 +13,33 @@
   <title>Drogaria Solar</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body {
-      background-color: #f8f9fa;
-      color: #2d3436;
-    }
-    /* O topo agora não é mais fixo, ele sobe com a página */
-    header {
-      background: #fff;
-      padding: 30px 20px;
-      text-align: center;
-      z-index: 10;
-    }
-    .header-container {
-      max-width: 1300px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .logo h1 {
-      font-size: 2.5em;
-      font-weight: 700;
-      color: #e31c19;
-      margin: 0;
-    }
-    .logo p {
-      font-size: 1.1em;
-      color: #e31c19;
-      margin-bottom: 20px;
-      font-style: italic;
-    }
-    .fachada-img {
-      width: 100%;
-      max-width: 600px;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-      border: 3px solid #e31c19;
-    }
-    /* O MENU fica fixo no topo quando você desce a página */
-    nav {
-      background-color: #fff;
-      padding: 15px 0;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #e31c19;
-      font-weight: 600;
-      font-size: 0.95em;
-      padding: 8px 15px;
-      border-radius: 20px;
-      transition: 0.3s;
-      white-space: nowrap;
-    }
-    nav a:hover {
-      background-color: #e31c19;
-      color: #fff;
-    }
-    .section {
-      display: none;
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-      min-height: 600px;
-    }
-    .section.active {
-      display: block;
-    }
-    .section h2 {
-      color: #e31c19;
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 2em;
-    }
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-    }
-    .product-card {
-      background: #fff;
-      border-radius: 15px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: 0.3s;
-    }
-    .product-card:hover { transform: translateY(-5px); }
-    .product-card img {
-      max-width: 100%;
-      height: 160px;
-      object-fit: contain;
-      margin-bottom: 15px;
-    }
-    .add-to-cart {
-      background-color: #e31c19;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: 600;
-      width: 100%;
-    }
-    #cart-icon {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background: #e31c19;
-      color: #fff;
-      width: 65px;
-      height: 65px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8em;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      z-index: 2000;
-    }
-    #cart-count {
-      position: absolute;
-      top: 0;
-      right: 0;
-      background: #fff;
-      color: #e31c19;
-      border-radius: 50%;
-      width: 22px;
-      height: 22px;
-      font-size: 0.7em;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    #cart-modal {
-      display: none;
-      position: fixed;
-      bottom: 100px;
-      right: 25px;
-      background: #fff;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      width: 320px;
-      z-index: 2001;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background-color: #f8f9fa; color: #2d3436; }
+    header { background: #fff; padding: 30px 20px; text-align: center; }
+    .header-container { max-width: 1300px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+    .logo h1 { font-size: 2.5em; font-weight: 700; color: #e31c19; margin: 0; }
+    .logo p { font-size: 1.1em; color: #e31c19; margin-bottom: 20px; font-style: italic; }
+    .fachada-img { width: 100%; max-width: 600px; border-radius: 12px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); border: 3px solid #e31c19; }
+    nav { background-color: #fff; padding: 15px 0; text-align: center; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); position: sticky; top: 0; z-index: 1000; }
+    nav a { margin: 0 10px; text-decoration: none; color: #e31c19; font-weight: 600; font-size: 0.95em; padding: 8px 15px; border-radius: 20px; transition: 0.3s; white-space: nowrap; }
+    nav a:hover { background-color: #e31c19; color: #fff; }
+    .section { display: none; padding: 40px 20px; max-width: 1200px; margin: 0 auto; min-height: 500px; }
+    .section.active { display: block; }
+    .section h2 { color: #e31c19; text-align: center; margin-bottom: 30px; font-size: 2em; }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+    .product-card { background: #fff; border-radius: 15px; padding: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #eee; }
+    .product-card:hover { transform: translateY(-5px); border-color: #e31c19; }
+    .product-card img { max-width: 100%; height: 160px; object-fit: contain; margin-bottom: 15px; border-radius: 8px; }
+    .product-name { font-weight: 600; font-size: 1em; color: #2d3436; height: 50px; overflow: hidden; }
+    .product-price { color: #e31c19; font-size: 1.4em; font-weight: 700; margin: 10px 0; }
+    .add-to-cart { background-color: #e31c19; color: #fff; border: none; padding: 12px; border-radius: 25px; cursor: pointer; font-weight: 600; width: 100%; transition: 0.2s; }
+    .add-to-cart:hover { background-color: #b31613; }
+    #cart-icon { position: fixed; bottom: 25px; right: 25px; background: #e31c19; color: #fff; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8em; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 2000; }
+    #cart-count { position: absolute; top: 0; right: 0; background: #fff; color: #e31c19; border-radius: 50%; width: 22px; height: 22px; font-size: 0.7em; font-weight: bold; display: flex; align-items: center; justify-content: center; }
+    #cart-modal { display: none; position: fixed; bottom: 100px; right: 25px; background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); width: 320px; z-index: 2001; }
     #cart-modal.active { display: block; }
-    footer {
-      background: #e31c19;
-      color: #fff;
-      text-align: center;
-      padding: 30px;
-      margin-top: 50px;
-    }
-    @media (max-width: 768px) {
-      nav { overflow-x: auto; display: flex; padding: 10px; }
-      nav a { font-size: 0.85em; padding: 6px 12px; }
-      .logo h1 { font-size: 1.8em; }
-    }
+    footer { background: #e31c19; color: #fff; text-align: center; padding: 30px; margin-top: 50px; }
+    @media (max-width: 768px) { nav { overflow-x: auto; display: flex; padding: 10px; } .logo h1 { font-size: 1.8em; } }
   </style>
 </head>
 <body>
@@ -212,18 +68,126 @@
     <div class="products-grid">
       <div class="product-card">
         <img src="imagens/tintura_maxton.jpg" alt="Tintura Maxton">
-        <p>Tintura Maxton</p>
-        <p><strong>R$ 9,99</strong></p>
+        <p class="product-name">Tintura Maxton Cores Intensas</p>
+        <p class="product-price">R$ 9,99</p>
         <button class="add-to-cart" onclick="addToCart('Tintura Maxton', 9.99)">Adicionar</button>
+      </div>
+      <div class="product-card">
+        <img src="imagens/shampoo_nutry_cap_mamona.jpg" alt="Shampoo Mamona">
+        <p class="product-name">Shampoo Nutry Cap Mamona 500ml</p>
+        <p class="product-price">R$ 25,99</p>
+        <button class="add-to-cart" onclick="addToCart('Shampoo Nutry Cap Mamona', 25.99)">Adicionar</button>
+      </div>
+      <div class="product-card">
+        <img src="imagens/desodorante_nivea_men.jpg" alt="Desodorante Nivea">
+        <p class="product-name">Desodorante Nivea Men Aerossol</p>
+        <p class="product-price">R$ 15,49</p>
+        <button class="add-to-cart" onclick="addToCart('Desodorante Nivea Men', 15.49)">Adicionar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="medicamentos" class="section">
+    <h2>Medicamentos Isentos</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <img src="imagens/simeticona_75mgml.jpg" alt="Simeticona">
+        <p class="product-name">Simeticona Gotas 75mg/ml</p>
+        <p class="product-price">R$ 6,99</p>
+        <button class="add-to-cart" onclick="addToCart('Simeticona Gotas', 6.99)">Adicionar</button>
+      </div>
+      <div class="product-card">
+        <img src="imagens/dipirona_500mg.jpg" alt="Dipirona">
+        <p class="product-name">Dipirona Monoidratada 500mg 10cp</p>
+        <p class="product-price">R$ 4,50</p>
+        <button class="add-to-cart" onclick="addToCart('Dipirona 500mg', 4.50)">Adicionar</button>
+      </div>
+      <div class="product-card">
+        <img src="imagens/neosa.jpg" alt="Analgésico">
+        <p class="product-name">Analgésico p/ Enxaqueca 10cp</p>
+        <p class="product-price">R$ 18,90</p>
+        <button class="add-to-cart" onclick="addToCart('Analgésico Enxaqueca', 18.90)">Adicionar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="higiene" class="section">
+    <h2>Higiene Pessoal</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <img src="imagens/colgate_180g.jpg" alt="Colgate">
+        <p class="product-name">Creme Dental Colgate Triple Action 180g</p>
+        <p class="product-price">R$ 13,99</p>
+        <button class="add-to-cart" onclick="addToCart('Colgate 180g', 13.99)">Adicionar</button>
+      </div>
+      <div class="product-card">
+        <img src="imagens/sabonete_gipsy_80g.jpg" alt="Sabonete">
+        <p class="product-name">Sabonete Gipsy Fragrâncias 80g</p>
+        <p class="product-price">R$ 1,49</p>
+        <button class="add-to-cart" onclick="addToCart('Sabonete Gipsy', 1.49)">Adicionar</button>
+      </div>
+      <div class="product-card">
+        <img src="imagens/papel_higienico.jpg" alt="Papel Higiênico">
+        <p class="product-name">Papel Higiênico Folha Dupla 12 Rolos</p>
+        <p class="product-price">R$ 16,90</p>
+        <button class="add-to-cart" onclick="addToCart('Papel Higiênico 12un', 16.90)">Adicionar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="infantil" class="section">
+    <h2>Linha Infantil</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <img src="imagens/toalha_guri_baby.jpg" alt="Toalha Umedecida">
+        <p class="product-name">Toalha Umedecida Guri Baby 100un</p>
+        <p class="product-price">R$ 9,99</p>
+        <button class="add-to-cart" onclick="addToCart('Toalha Guri Baby', 9.99)">Adicionar</button>
+      </div>
+      <div class="product-card">
+        <img src="imagens/fralda_pampers.jpg" alt="Fralda">
+        <p class="product-name">Fralda Pampers Ajuste Total G/XG</p>
+        <p class="product-price">R$ 49,90</p>
+        <button class="add-to-cart" onclick="addToCart('Fralda Pampers', 49.90)">Adicionar</button>
+      </div>
+      <div class="product-card">
+        <img src="imagens/talco_baby.jpg" alt="Talco">
+        <p class="product-name">Talco Flora Neném 180g</p>
+        <p class="product-price">R$ 14,99</p>
+        <button class="add-to-cart" onclick="addToCart('Talco Flora Neném', 14.99)">Adicionar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="vitaminas" class="section">
+    <h2>Vitaminas e Suplementos</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <img src="imagens/fortgerin.jpg" alt="Vitaminas">
+        <p class="product-name">Fortgerin Vitamínico de A a Z</p>
+        <p class="product-price">R$ 44,99</p>
+        <button class="add-to-cart" onclick="addToCart('Fortgerin Vitamina', 44.99)">Adicionar</button>
+      </div>
+      <div class="product-card">
+        <img src="imagens/vitamina_c_efervescente.jpg" alt="Vitamina C">
+        <p class="product-name">Vitamina C 1g Efervescente 10tb</p>
+        <p class="product-price">R$ 12,50</p>
+        <button class="add-to-cart" onclick="addToCart('Vitamina C 1g', 12.50)">Adicionar</button>
+      </div>
+      <div class="product-card">
+        <img src="imagens/melatonina.jpg" alt="Melatonina">
+        <p class="product-name">Melatonina Gotas Alta Concentração</p>
+        <p class="product-price">R$ 29,90</p>
+        <button class="add-to-cart" onclick="addToCart('Melatonina Gotas', 29.90)">Adicionar</button>
       </div>
     </div>
   </div>
 
   <div id="contato" class="section">
     <h2>Contato</h2>
-    <div style="text-align: center;">
-        <p>📱 WhatsApp: <a href="https://wa.me/556196130998" style="color:#e31c19; font-weight:bold;">(61) 96130-998</a></p><br>
-        <p>📍 SH Jardim Botânico Condomínio Solar de Brasília Q 3<br>Brasília - DF</p>
+    <div style="text-align: center; line-height: 2;">
+        <p>📱 WhatsApp: <a href="https://wa.me/556196130998" style="color:#e31c19; font-weight:bold;">(61) 96130-998</a></p>
+        <p>📍 <strong>Endereço:</strong><br>SH Jardim Botânico Condomínio Solar de Brasília Q 3<br>Jardim Botânico, Brasília - DF</p>
     </div>
   </div>
 
@@ -237,10 +201,10 @@
 
   <div id="cart-modal">
     <h3 style="color:#e31c19;">Seu Carrinho</h3>
-    <div id="cart-items" style="margin: 15px 0;"></div>
+    <div id="cart-items" style="margin: 15px 0; max-height: 200px; overflow-y: auto;"></div>
     <select id="payment-method" style="width: 100%; padding: 8px; margin-bottom: 10px;">
       <option value="dinheiro">Dinheiro</option>
-      <option value="cartao">Cartão</option>
+      <option value="cartao">Cartão (Maquininha)</option>
       <option value="pix">Pix</option>
     </select>
     <button onclick="sendToWhatsApp()" style="width: 100%; background: #e31c19; color: #fff; border: none; padding: 12px; border-radius: 25px; cursor: pointer; font-weight: bold;">Pedir no WhatsApp</button>
@@ -252,31 +216,30 @@
     function showSection(sectionId) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.getElementById(sectionId).classList.add('active');
-      
-      // Isso faz a página rolar para o início da seção escolhida, logo abaixo da imagem
       const navHeight = document.querySelector('nav').offsetHeight;
       const sectionPos = document.getElementById(sectionId).offsetTop;
-      window.scrollTo({
-        top: sectionPos - navHeight,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: sectionPos - navHeight, behavior: 'smooth' });
     }
 
     function addToCart(name, price) {
       cart.push({name, price});
       updateCart();
-      alert(name + " adicionado!");
+      const count = document.getElementById('cart-count');
+      count.style.transform = "scale(1.5)";
+      setTimeout(() => count.style.transform = "scale(1)", 200);
     }
 
     function updateCart() {
       document.getElementById('cart-count').innerText = cart.length;
       const itemsDiv = document.getElementById('cart-items');
-      itemsDiv.innerHTML = cart.map(i => `<div style="display:flex; justify-content:space-between;"><span>${i.name}</span><strong>R$ ${i.price.toFixed(2)}</strong></div>`).join('');
+      if(cart.length === 0) {
+          itemsDiv.innerHTML = "<p>Carrinho vazio</p>";
+      } else {
+          itemsDiv.innerHTML = cart.map(i => `<div style="display:flex; justify-content:space-between; margin-bottom:5px; font-size:0.9em;"><span>${i.name}</span><strong>R$ ${i.price.toFixed(2)}</strong></div>`).join('');
+      }
     }
 
-    function toggleCart() {
-      document.getElementById('cart-modal').classList.toggle('active');
-    }
+    function toggleCart() { document.getElementById('cart-modal').classList.toggle('active'); }
 
     function sendToWhatsApp() {
       if(cart.length === 0) return alert("Carrinho vazio!");
